@@ -42,3 +42,26 @@ physics.addBody(geek1, "dynamic" ,{density=0.6, friction=0.2, bounce=0.2})
 local suelo = display.newRect(centerX, _H, _W, 10)
 
 physics.addBody( suelo, "static", {density = 0.1, friction = 0.6, bounce = 0} )
+
+
+
+--Gestión de Eventos para el Juego
+
+function getTouched(event)
+
+    if event.phase == "began" then
+       display.getCurrentStage( ):setFocus( geek1 )
+
+       elseif event.phase == "ended" then
+           geek1:applyLinearImpulse( event.xStart - event.x, event.yStart - event.y, geek1.x, geek1.y )
+           display.getCurrentStage( ):setFocus( nil )
+
+
+    end
+
+
+end
+
+
+
+geek1:addEventListener( "touch", getTouched )
