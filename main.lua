@@ -52,6 +52,24 @@ physics.addBody( paredIzq, "static", {density = 0.1, friction = 0.6, bounce = 0}
 local paredDer = display.newRect(_W - 1, _H/2, 2, _H)
 physics.addBody( paredDer, "static", {density = 0.1, friction = 0.6, bounce = 0} )
 
+--Generamos el número de torres que vamos a necesitar en el Juego mediante un For
+for i = 1, 4 do
+
+    for j = 1, 4 do
+
+local create = display.newImage("crate2.png", centerX - 60 + 60 * i, centerY - 60 + 60 * j)
+physics.addBody( create, "dynamic", {density = 0.5, friction = 0.1, bounce = 0})
+
+end
+
+--Generamos el número de Hipster para cada bloque
+local hipster = display.newImage( "Hipster.png", centerX - 60 + 60*i, centerY - 30 - 5 * 62)
+physics.addBody( hipster, "dynamic", {density=1, friction=0.9, bounce=0.1})
+
+end
+
+
+
 --Gestión de Eventos para el Juego
 
 function getTouched(event)
