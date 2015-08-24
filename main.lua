@@ -3,7 +3,6 @@
 -- main.lua Juan Manuel Morillo (JuanMorillios)
 --
 -----------------------------------------------------------------------------------------
---
 
 --Cargamos Libreria con la que vamos a trabajar
 local physics  = require("physics")
@@ -11,11 +10,9 @@ local physics  = require("physics")
 --Inicializamos la Libreria
 physics.start( )
 
-
 --Declaramos las variables para controlar tamaño ancho y alto de la pantalla, más bien centralizar
 local centerX = display.contentCenterX
 local centerY = display.contentCenterY
-
 
 --Controlamos ancho y alto
 local ancho = display.contentWidth
@@ -25,7 +22,6 @@ local alto = display.contentHeight
 local _W = display.contentWidth
 local _H = display.contentHeight
 
-
 --Ocultamos Barra Estado
 display.setStatusBar(display.HiddenStatusBar)
 
@@ -34,7 +30,6 @@ local background1 = display.newImage("background.png", centerX, centerY)
 background1:scale( display.contentWidth/background1.contentWidth, display.contentHeight/background1.contentHeight )
 background1.x = display.contentWidth/2
 background1.y = display.contentHeight/2
-
 
 --Agregamos personaje principal del Juego.
 local geek1 = display.newImage("superGeek.png", centerX-200, centerY+20)
@@ -53,9 +48,11 @@ local paredDer = display.newRect(_W - 1, _H/2, 2, _H)
 physics.addBody( paredDer, "static", {density = 0.1, friction = 0.6, bounce = 0} )
 
 --Generamos el número de torres que vamos a necesitar en el Juego mediante un For
-for i = 1, 4 do
+--
+for i = 1,  4 do
 
     for j = 1, 4 do
+
 
 local create = display.newImage("crate2.png", centerX - 60 + 60 * i, centerY - 60 + 60 * j)
 physics.addBody( create, "dynamic", {density = 0.5, friction = 0.1, bounce = 0})
@@ -68,6 +65,20 @@ physics.addBody( hipster, "dynamic", {density=1, friction=0.9, bounce=0.1})
 
 end
 
+--Cargamos sonido para Geek1 principal
+
+local sound = audio.loadSound( "cannon.mp3" )
+
+--Función para controlar el sonido mediante Touch al Geek1
+function soundPlay(event)
+
+audio.play(sound)
+
+--event.target:removeSelf( )
+
+end
+
+geek1:addEventListener( "touch", soundPlay )
 
 
 --Gestión de Eventos para el Juego
