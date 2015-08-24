@@ -33,7 +33,7 @@ background1.y = display.contentHeight/2
 
 --Agregamos personaje principal del Juego.
 local geek1 = display.newImage("superGeek.png", centerX-200, centerY+20)
-physics.addBody(geek1, "dynamic" ,{density=0.6, friction=0.2, bounce=0.2})
+physics.addBody(geek1, "dynamic" ,{density=0.5, friction=0,5, bounce=0.2})
 
 --Suelo
 local suelo = display.newRect(centerX, _H, _W, 10)
@@ -55,13 +55,13 @@ for i = 1,  4 do
 
 
 local create = display.newImage("crate2.png", centerX - 60 + 60 * i, centerY - 60 + 60 * j)
-physics.addBody( create, "dynamic", {density = 0.5, friction = 0.1, bounce = 0})
+physics.addBody( create, "dynamic", {density = 0.4, friction = 0.1, bounce = 0})
 
 end
 
 --Generamos el número de Hipster para cada bloque
 local hipster = display.newImage( "Hipster.png", centerX - 60 + 60*i, centerY - 30 - 5 * 62)
-physics.addBody( hipster, "dynamic", {density=1, friction=0.9, bounce=0.1})
+physics.addBody( hipster, "dynamic", {density=2, friction=0.9, bounce=0.1})
 
 end
 
