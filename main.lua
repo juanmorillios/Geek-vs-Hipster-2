@@ -25,6 +25,8 @@ local _H = display.contentHeight
 --Ocultamos Barra Estado
 display.setStatusBar(display.HiddenStatusBar)
 
+--Evitamos Girar la pantalla.
+
 --Cargamos el fondo del juego
 local background1 = display.newImage("background.png", centerX, centerY)
 background1:scale( display.contentWidth/background1.contentWidth, display.contentHeight/background1.contentHeight )
@@ -34,6 +36,7 @@ background1.y = display.contentHeight/2
 --Agregamos personaje principal del Juego.
 local geek1 = display.newImage("superGeek.png", centerX-200, centerY+20)
 physics.addBody(geek1, "dynamic" ,{density=0.5, friction=0,5, bounce=0.2})
+
 
 --Suelo
 local suelo = display.newRect(centerX, _H, _W, 10)
